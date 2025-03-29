@@ -1,0 +1,47 @@
+# llamastyles/config.yaml
+
+# LlamaStyles Configuration
+
+# Model settings
+classic_model:
+  device: "auto"  # "auto", "cuda", "cpu", or "mps"
+  mixed_precision: true
+  cache_models: true
+  use_vgg19: true
+  content_weight: 1.0
+  style_weight: 100.0
+  tv_weight: 0.001
+
+diffusion_model:
+  device: "auto"  # "auto", "cuda", "cpu", or "mps"
+  mixed_precision: true
+  cache_models: true
+  controlnet_models: 
+    - "lllyasviel/sd-controlnet-canny"
+  style_strength: 0.75
+  guidance_scale: 7.5
+  inference_steps: 30
+  use_color_transfer: true
+
+# Video processing settings
+video_processor:
+  batch_size: 4
+  temporal_radius: 2
+  default_fps: 30
+  default_resolution: "720p"  # "720p", "1080p", or WIDTHxHEIGHT
+
+# LLM integration settings
+llm:
+  enable: false
+  provider: "openai"  # "openai", "llama-cpp", or "other"
+  api_key: ""  # Leave empty for environment variable
+  model: "gpt-3.5-turbo"
+  temperature: 0.7
+  max_tokens: 100
+  functions_enabled: true
+
+# Logging settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: ""  # Leave empty for console only

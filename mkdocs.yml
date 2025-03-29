@@ -1,0 +1,100 @@
+site_name: StyleGen Documentation
+site_description: Advanced AI Style Transfer CLI Application
+site_author: Your Name
+repo_url: https://github.com/yourusername/stylegen
+repo_name: StyleGen
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: purple
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          setup_commands:
+            - import sys
+            - sys.path.append(".")
+          selection:
+            members: true
+          rendering:
+            show_source: true
+            show_if_no_docstring: true
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: installation.md
+    - Quick Start: quickstart.md
+    - Examples: examples.md
+  - User Guide:
+    - Basic Usage: usage/basic.md
+    - Advanced Features: usage/advanced.md
+    - Configuration: usage/configuration.md
+  - Models:
+    - Classic Style Transfer: models/classic.md
+    - Diffusion Style Transfer: models/diffusion.md
+  - API Reference:
+    - StyleTransferModel: api/style_transfer_model.md
+    - ClassicStyleTransfer: api/classic_transfer.md
+    - DiffusionStyleTransfer: api/diffusion_transfer.md
+    - VideoProcessor: api/video_processor.md
+    - StyleGenApp: api/stylegen_app.md
+  - Development:
+    - Contributing: development/contributing.md
+    - Testing: development/testing.md
+    - Docker: development/docker.md
+  - About:
+    - License: about/license.md
+    - Changelog: about/changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/stylegen
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/yourusername/stylegen
+
+copyright: Copyright &copy; 2024 Your Name 

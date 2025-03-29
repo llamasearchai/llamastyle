@@ -1,0 +1,114 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llamastyles"
+version = "1.0.0"
+description = "Advanced neural style transfer with llama-themed UI for images and videos"
+authors = [
+    {name = "StyleGen Team", email = "example@example.com"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Multimedia :: Graphics",
+]
+
+dependencies = [
+    "torch>=1.9.0",
+    "torchvision>=0.10.0",
+    "numpy>=1.19.0",
+    "pillow>=8.0.0",
+    "opencv-python>=4.5.0",
+    "rich>=12.0.0",
+    "scikit-image>=0.18.0",
+    "scikit-learn>=1.0.0",
+    "matplotlib>=3.4.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+diffusion = [
+    "diffusers>=0.14.0",
+    "transformers>=4.25.0",
+    "accelerate>=0.15.0",
+]
+color = [
+    "colormath>=3.0.0",
+]
+llm = [
+    "openai>=0.27.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "pylint>=2.15.0",
+]
+docs = [
+    "mkdocs>=1.4.0",
+    "mkdocs-material>=8.5.0",
+    "mkdocstrings>=0.19.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/yourusername/llamastyles"
+"Bug Tracker" = "https://github.com/yourusername/llamastyles/issues"
+
+[project.scripts]
+llamastyles = "llamastyles.cli:main"
+
+[tool.setuptools.package-data]
+llamastyles = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torchvision.*",
+    "PIL.*",
+    "cv2.*",
+    "numpy.*",
+    "matplotlib.*",
+    "rich.*",
+    "colormath.*",
+    "diffusers.*",
+    "transformers.*",
+    "skimage.*",
+    "sklearn.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v"
+
+# To run with coverage, use: pytest --cov=llamastyles 

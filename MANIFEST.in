@@ -1,0 +1,19 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include CONTRIBUTING.md
+include QUICK_START.md
+include INSTALL.md
+include PUBLISH.md
+include pyproject.toml
+include setup.py
+include llamastyles/py.typed
+
+recursive-include examples *.py
+recursive-include docs *.md *.py *.yml
+recursive-include llamastyles *.py
+
+prune .github
+prune __pycache__
+prune *.egg-info
+prune .pytest_cache 
